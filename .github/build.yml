@@ -1,8 +1,10 @@
-name: 'Terraform - State'
+name: 'Deploy Databricks Workspace using Terraform'
 
 on:
+  push:
+    branches: ["main"]
   pull_request:
-    branches: [main]
+    branches: ["main"]
 
 jobs:
   terraform-databricks-dev:
