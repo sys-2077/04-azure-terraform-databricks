@@ -70,22 +70,7 @@ resource "azurerm_databricks_workspace" "this" {
   }
 }
 
-# >> Create Cluster in Databricks workspace
-resource "databricks_cluster" "this" {
-  cluster_name            = "democluster"
-  num_workers             = var.workers
-  node_type_id            = var.node_type
-  spark_version           = "11.3.x-scala2.12"
-  
-  spark_conf = {
-    "spark.databricks.cluster.profile" : "singleNode"
-    "spark.databricks.unity.catalog.enabled" : "true"
-  }
 
-  custom_tags = {
-    environment = var.env
-  }
-}
 #--------------------------
 #--------------------------
 
