@@ -75,7 +75,7 @@ resource "databricks_cluster" "this" {
   cluster_name            = "democluster"
   num_workers             = var.workers
   node_type_id            = var.node_type
-  spark_version           = "7.3.x-scala2.12"
+  spark_version           = "11.3.x-scala2.12"
   
   spark_conf = {
     "spark.databricks.cluster.profile" : "singleNode"
