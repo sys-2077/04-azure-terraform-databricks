@@ -1,0 +1,32 @@
+name: 'Terraform - State'
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  terraform-databricks-dev:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Terraform Init
+      run: terraform init
+      working-directory: ./dev
+      
+    - name: Terraform Plan
+      run: terraform plan
+      working-directory: ./dev
+
+    - name: Terraform Apply
+      run: terraform apply -auto-approve
+      working-directory: ./dev
+
+    - name: Print Outputs
+      run: |
+        echo "Databricks Workspace URL: ${{ steps.terraform-databricks-dev.outputs.databricks_host }}"
