@@ -2,9 +2,9 @@ name: 'Deploy Databricks Workspace using Terraform'
 
 on:
   push:
-    branches: ["main"]
+    branches: [dev]
   pull_request:
-    branches: ["main"]
+    branches: [dev]
 
 jobs:
   terraform-databricks-dev:
