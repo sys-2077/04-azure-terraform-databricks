@@ -57,18 +57,6 @@ resource "azurerm_resource_group" "this" {
 # Databricks Workspace
 #--------------------------
 
-# >> Create a Databricks workspace
-resource "azurerm_databricks_workspace" "this" {
-  name                        = "db-workspace"
-  resource_group_name         = azurerm_resource_group.this.name
-  location                    = azurerm_resource_group.this.location
-  sku                         = "standard"
-  managed_resource_group_name = "db-workspace-rg"
-
-  tags = {
-    environment = var.env
-  }
-}
 
 #--------------------------
 #--------------------------
